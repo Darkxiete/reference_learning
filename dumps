@@ -1,0 +1,105 @@
+reference_learning`swap_1:
+pushq  %rbp
+movq   %rsp, %rbp
+movq   %rdi, -0x8(%rbp)
+movq   %rsi, -0x10(%rbp)
+movq   -0x8(%rbp), %rsi
+movl   (%rsi), %eax
+movl   %eax, -0x14(%rbp)
+movq   -0x10(%rbp), %rsi
+movl   (%rsi), %eax
+movl   %eax, -0x18(%rbp)
+movl   -0x18(%rbp), %eax
+movq   -0x8(%rbp), %rsi
+movl   %eax, (%rsi)
+movl   -0x14(%rbp), %eax
+movq   -0x10(%rbp), %rsi
+movl   %eax, (%rsi)
+popq   %rbp
+retq
+nopw   %cs:(%rax,%rax)
+
+reference_learning`swap_2:
+pushq  %rbp
+movq   %rsp, %rbp
+movq   %rdi, -0x8(%rbp)
+movq   %rsi, -0x10(%rbp)
+movq   -0x8(%rbp), %rsi
+movl   (%rsi), %eax
+movl   %eax, -0x14(%rbp)
+movq   -0x10(%rbp), %rsi
+movl   (%rsi), %eax
+movq   -0x8(%rbp), %rsi
+movl   %eax, (%rsi)
+movl   -0x14(%rbp), %eax
+movq   -0x10(%rbp), %rsi
+movl   %eax, (%rsi)
+popq   %rbp
+retq
+nopl   (%rax)
+
+reference_learning`swap_3:
+pushq  %rbp
+movq   %rsp, %rbp
+movq   %rdi, -0x8(%rbp)
+movq   %rsi, -0x10(%rbp)
+movq   -0x8(%rbp), %rsi
+movl   (%rsi), %eax
+movl   %eax, -0x14(%rbp)
+movq   -0x10(%rbp), %rsi
+movl   (%rsi), %eax
+movq   -0x8(%rbp), %rsi
+movl   %eax, (%rsi)
+movl   -0x14(%rbp), %eax
+movq   -0x10(%rbp), %rsi
+movl   %eax, (%rsi)
+popq   %rbp
+retq
+nopl   (%rax)
+
+reference_learning`accumulate_1:
+pushq  %rbp
+movq   %rsp, %rbp
+movq   %rdi, -0x8(%rbp)
+movq   %rsi, -0x10(%rbp)
+movq   -0x10(%rbp), %rsi
+movl   0x1c(%rsi), %eax
+movq   -0x8(%rbp), %rsi
+addl   0x1c(%rsi), %eax
+movl   %eax, 0x1c(%rsi)
+movq   -0x10(%rbp), %rsi
+movl   0x18(%rsi), %eax
+movq   -0x8(%rbp), %rsi
+addl   0x18(%rsi), %eax
+movl   %eax, 0x18(%rsi)
+movq   -0x8(%rbp), %rax
+popq   %rbp
+retq
+nopw   %cs:(%rax,%rax)
+nop
+
+reference_learning`accumulate_2:
+pushq  %rbp
+movq   %rsp, %rbp
+subq   $0x20, %rsp
+movq   %rdi, %rax
+movq   %rsi, -0x8(%rbp)
+movq   %rdx, -0x10(%rbp)
+movq   -0x10(%rbp), %rdx
+movl   0x1c(%rdx), %ecx
+movq   -0x8(%rbp), %rdx
+addl   0x1c(%rdx), %ecx
+movl   %ecx, 0x1c(%rdx)
+movq   -0x10(%rbp), %rdx
+movl   0x18(%rdx), %ecx
+movq   -0x8(%rbp), %rdx
+addl   0x18(%rdx), %ecx
+movl   %ecx, 0x18(%rdx)
+movq   -0x8(%rbp), %rsi
+movq   %rax, -0x18(%rbp)
+callq  0x108f2dc80               ; free_throws::free_throws at main.cpp:3
+movq   -0x18(%rbp), %rax
+addq   $0x20, %rsp
+popq   %rbp
+retq
+nopl   (%rax)
